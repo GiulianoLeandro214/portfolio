@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Leandro Giuliano — Junior Environment Artist portfolio. Environment Art, 3D Modeling and Lighting.">
+<title>Leandro Giuliano — Junior Environment Artist</title>
+<style>
+:root{
+  --bg:#0b0c0d; --panel:#111315; --panel2:#16191c; --text:#f2f3f4;
+  --muted:#9da3aa; --line:#25292d; --accent:#ffffff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%}
+.container{width:min(1200px,92vw);margin:0 auto}
+header{position:sticky;top:0;z-index:30;background:rgba(11,12,13,.84);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:700;letter-spacing:-.02em}
+.navlinks{display:flex;gap:24px;color:var(--muted);font-size:.92rem}
+.navlinks a:hover{color:var(--text)}
+.hero{min-height:78vh;display:grid;align-items:end;padding:72px 0 64px;background:
+linear-gradient(180deg,rgba(11,12,13,.05) 20%,rgba(11,12,13,.92) 94%),
+url("assets/archon/Archon1.webp") center 34%/cover no-repeat}
+.hero-inner{max-width:900px}
+.kicker{text-transform:uppercase;letter-spacing:.16em;color:#c8cdd1;font-size:.75rem;margin-bottom:18px}
+h1{font-size:clamp(3rem,8vw,7.2rem);line-height:.92;letter-spacing:-.065em;margin:0 0 20px}
+.subtitle{font-size:clamp(1rem,2vw,1.25rem);color:#d3d7da}
+.meta{display:flex;flex-wrap:wrap;gap:10px 20px;color:var(--muted);font-size:.9rem;margin-top:24px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border:1px solid #3a3e43;border-radius:999px;font-size:.9rem;transition:.2s;background:rgba(255,255,255,.03)}
+.btn:hover{background:#fff;color:#0b0c0d;border-color:#fff}
+section{padding:90px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:32px}
+.section-head h2{font-size:2rem;margin:0;letter-spacing:-.04em}
+.section-head p{max-width:580px;color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{grid-column:span 6;background:var(--panel);border:1px solid var(--line);overflow:hidden;position:relative}
+.card.wide{grid-column:span 12}
+.thumb{aspect-ratio:16/9;overflow:hidden;background:#0e1012}
+.thumb img{height:100%;object-fit:cover;transition:transform .45s ease}
+.card:hover .thumb img{transform:scale(1.025)}
+.card-body{padding:20px 20px 22px}
+.eyebrow{font-size:.72rem;color:#aab0b6;text-transform:uppercase;letter-spacing:.14em}
+.card h3{margin:6px 0 8px;font-size:1.45rem;letter-spacing:-.03em}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.tag{border:1px solid var(--line);padding:4px 8px;border-radius:999px;color:#c5c9cd;font-size:.72rem}
+.project{padding-top:20px}
+.project + .project{margin-top:88px;border-top:1px solid var(--line);padding-top:76px}
+.project-top{display:grid;grid-template-columns:1fr 1.8fr;gap:44px;align-items:start;margin-bottom:30px}
+.project-top h3{font-size:2.3rem;line-height:1.05;letter-spacing:-.045em;margin:.25rem 0 12px}
+.project-top p{color:var(--muted);margin:0}
+.details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:24px}
+.detail{padding-top:9px;border-top:1px solid var(--line)}
+.detail span{display:block;color:#747b82;font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:3px}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.gallery img{border:1px solid var(--line);background:#0f1113;cursor:zoom-in}
+.gallery img.full{grid-column:1/-1}
+.gallery.archon{grid-template-columns:1fr}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.about-card{background:var(--panel);border:1px solid var(--line);padding:28px}
+.about-card h3{margin-top:0}
+.skills{display:flex;flex-wrap:wrap;gap:8px}
+.skill{padding:8px 11px;border:1px solid var(--line);color:#cbd0d4;border-radius:999px;font-size:.84rem}
+footer{padding:50px 0 70px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:24px;z-index:100}
+.modal.open{display:flex}
+.modal img{max-width:94vw;max-height:88vh;width:auto;object-fit:contain;box-shadow:0 20px 70px rgba(0,0,0,.5)}
+.close{position:absolute;right:22px;top:18px;font-size:2rem;color:#fff;border:0;background:transparent;cursor:pointer}
+@media(max-width:800px){
+  .navlinks{gap:13px;font-size:.8rem}
+  .hero{min-height:74vh;padding-bottom:44px}
+  section{padding:64px 0}
+  .grid,.about,.project-top{grid-template-columns:1fr}
+  .card,.card.wide{grid-column:span 1}
+  .gallery{grid-template-columns:1fr}
+  .gallery img.full{grid-column:auto}
+  .project-top h3{font-size:1.9rem}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand">LEANDRO GIULIANO</div>
+    <nav class="navlinks">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="kicker">3D Artist · Environment Art · Lighting</div>
+    <h1>Junior Environment Artist</h1>
+    <div class="subtitle">3D Environment · 3D Modeling · Lighting</div>
+    <div class="meta">
+      <span>Rome, Italy</span>
+      <span>Game Design & Environment</span>
+      <span>Unreal Engine 5 · Blender · Substance Painter</span>
+    </div>
+    <div class="btns">
+      <a class="btn" href="#projects">View projects</a>
+      <a class="btn" href="Leandro_Giuliano_CV.pdf" target="_blank" rel="noopener">View CV</a>
+      <a class="btn" href="mailto:lm.giuliano.214@gmail.com">Contact</a>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+<div class="container">
+  <div class="section-head">
+    <h2>Selected Work</h2>
+    <p>A compact selection of environment, lighting, modeling and game-asset work. Use the project sections below for process and larger imagery.</p>
+  </div>
+
+  <div class="grid">
+    <a class="card wide" href="#thesis">
+      <div class="thumb"><img src="assets/thesis/Envirment_Tesi6.webp" alt="Environment thesis interior scene"></div>
+      <div class="card-body"><div class="eyebrow">01 · Environment / Thesis</div><h3>Visual Perception in 3D</h3><p>Environment study focused on light, color, atmosphere and visual storytelling.</p><div class="tags"><span class="tag">Environment Art</span><span class="tag">Lighting</span><span class="tag">Visual Research</span></div></div>
+    </a>
+
+    <a class="card" href="#archon">
+      <div class="thumb"><img src="assets/archon/Archon1.webp" alt="Stylized environment study"></div>
+      <div class="card-body"><div class="eyebrow">02 · Environment Study</div><h3>Archon</h3><p>Stylized environment and composition study.</p><div class="tags"><span class="tag">Environment</span><span class="tag">Lighting</span></div></div>
+    </a>
+
+    <a class="card" href="#floating">
+      <div class="thumb"><img src="assets/stress/Stress_test_Isole_Sospese.webp" alt="Floating islands environment stress test"></div>
+      <div class="card-body"><div class="eyebrow">03 · Junior Environment Artist Stress Test</div><h3>Floating Islands</h3><p>Stylized environment built as an environment-art test.</p><div class="tags"><span class="tag">Unreal Engine 5</span><span class="tag">Environment</span></div></div>
+    </a>
+
+    <a class="card" href="#trench">
+      <div class="thumb"><img src="assets/trench/Trincea_v2_04.webp" alt="Trench environment study"></div>
+      <div class="card-body"><div class="eyebrow">04 · Environment Study</div><h3>Trench</h3><p>Environment blockout-to-look-development sequence.</p><div class="tags"><span class="tag">Environment</span><span class="tag">Set Dressing</span><span class="tag">Lighting</span></div></div>
+    </a>
+
+    <a class="card" href="#halflight">
+      <div class="thumb"><img src="assets/half-light/Rifle_textured_Intership.webp" alt="Textured weapon created for Half Light"></div>
+      <div class="card-body"><div class="eyebrow">05 · JimJames Games</div><h3>Half Light — Weapon Assets</h3><p>Weapon modeling and PBR texturing developed during a curricular internship in Paris.</p><div class="tags"><span class="tag">Blender</span><span class="tag">Substance Painter</span><span class="tag">Game Assets</span></div></div>
+    </a>
+  </div>
+</div>
+</section>
+
+<section class="container project" id="thesis">
+  <div class="project-top">
+    <div><div class="eyebrow">01 · Bachelor Thesis</div><h3>Visual Perception in 3D</h3><p>Environment imagery exploring the relationship between light, color, atmosphere and visual storytelling.</p>
+      <div class="details"><div class="detail"><span>Focus</span>Lighting · composition · visual storytelling</div><div class="detail"><span>Role</span>3D / Environment work</div></div>
+    </div>
+    <div><p>This project connects directly to the research focus of the Bachelor thesis, using environment lighting and composition as tools for perception and narrative.</p></div>
+  </div>
+  <div class="gallery">
+    <img src="assets/thesis/Envirment_Tesi1.webp" alt="">
+    <img src="assets/thesis/Envirment_Tesi2.webp" alt="">
+    <img src="assets/thesis/Envirment_Tesi3.webp" alt="">
+    <img src="assets/thesis/Envirment_Tesi6.webp" alt="">
+  </div>
+</section>
+
+<section class="container project" id="archon">
+  <div class="project-top">
+    <div><div class="eyebrow">02 · Environment Study</div><h3>Archon</h3><p>A stylized environment image built around large forms, atmospheric lighting and visual hierarchy.</p>
+      <div class="details"><div class="detail"><span>Focus</span>Composition · lighting</div><div class="detail"><span>Type</span>Environment study</div></div>
+    </div>
+  </div>
+  <div class="gallery archon"><img src="assets/archon/Archon1.webp" alt="Archon environment"></div>
+</section>
+
+<section class="container project" id="floating">
+  <div class="project-top">
+    <div><div class="eyebrow">03 · Junior Environment Artist Stress Test</div><h3>Floating Islands</h3><p>Stylized environment developed as an environment-art test, presented here as a final visual.</p>
+      <div class="details"><div class="detail"><span>Engine</span>Unreal Engine 5</div><div class="detail"><span>Focus</span>Environment composition · visual storytelling</div></div>
+    </div>
+  </div>
+  <div class="gallery"><img class="full" src="assets/stress/Stress_test_Isole_Sospese.webp" alt="Floating islands stress test environment"></div>
+</section>
+
+<section class="container project" id="trench">
+  <div class="project-top">
+    <div><div class="eyebrow">04 · Environment Study</div><h3>Trench</h3><p>A progression of environment development views, from early lighting and blockout stages to a more resolved final look.</p>
+      <div class="details"><div class="detail"><span>Focus</span>Set dressing · lighting · environment</div><div class="detail"><span>Views</span>Development sequence</div></div>
+    </div>
+  </div>
+  <div class="gallery">
+    <img class="full" src="assets/trench/Trincea_v1_01.webp" alt="">
+    <img src="assets/trench/Trincea_v1_02.webp" alt="">
+    <img src="assets/trench/Trincea_v2_02.webp" alt="">
+    <img src="assets/trench/Trincea_v2_03.webp" alt="">
+    <img src="assets/trench/Trincea_v2_04.webp" alt="">
+  </div>
+</section>
+
+<section class="container project" id="halflight">
+  <div class="project-top">
+    <div><div class="eyebrow">05 · JimJames Games · Half Light</div><h3>Weapon Assets</h3><p>Three-dimensional game assets created during a curricular internship in Paris.</p>
+      <div class="details"><div class="detail"><span>Software</span>Blender · Substance Painter</div><div class="detail"><span>Pipeline</span>Modeling → PBR texturing → engine integration</div></div>
+    </div>
+    <div><p>The selection below separates modeling work from the textured result, making the asset pipeline easy to review.</p></div>
+  </div>
+  <div class="gallery">
+    <img src="assets/half-light/Pistol_Model_Internship.webp" alt="Pistol model">
+    <img src="assets/half-light/Pistol_textured_Internship.webp" alt="Pistol textured">
+    <img src="assets/half-light/Rifle_Model_Intership.webp" alt="Rifle model">
+    <img src="assets/half-light/Rifle_textured_Internship.webp" alt="Rifle textured">
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head"><h2>About</h2><p>A short professional snapshot aligned with the CV.</p></div>
+    <div class="about">
+      <div class="about-card">
+        <h3>Profile</h3>
+        <p>Junior Environment Artist with a background in Digital Communication and Game Design, currently specializing in Environment Design for Video Games. Focused on 3D environment and asset creation, modeling, lighting and PBR materials, with a technical and organized approach.</p>
+      </div>
+      <div class="about-card">
+        <h3>Core skills</h3>
+        <div class="skills">
+          <span class="skill">Environment Art</span><span class="skill">3D Modeling</span><span class="skill">Lighting</span>
+          <span class="skill">PBR Materials</span><span class="skill">Blender</span><span class="skill">Substance Painter</span>
+          <span class="skill">Unreal Engine 5</span><span class="skill">Asset Creation</span><span class="skill">Visual Storytelling</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-head"><h2>Contact</h2><p>Open to internship opportunities in Italy and abroad, including independent, outsourcing and co-development studios.</p></div>
+    <div class="btns">
+      <a class="btn" href="mailto:lm.giuliano.214@gmail.com">lm.giuliano.214@gmail.com</a>
+      <a class="btn" href="Leandro_Giuliano_CV.pdf" target="_blank" rel="noopener">Open CV</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">© Leandro Giuliano · Junior Environment Artist</div>
+</footer>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <button class="close" aria-label="Close">×</button>
+  <img id="modalImg" src="" alt="">
+</div>
+
+<script>
+const modal=document.getElementById('modal');
+const modalImg=document.getElementById('modalImg');
+document.querySelectorAll('.gallery img').forEach(img=>{
+  img.addEventListener('click',()=>{
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    modalImg.src=img.src; modalImg.alt=img.alt;
+  });
+});
+function closeModal(){
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  modalImg.src='';
+}
+document.querySelector('.close').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+</script>
+</body>
+</html>
